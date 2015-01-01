@@ -10,6 +10,21 @@ We will let the users set certain features, like the featured service or article
 
 ## Install & Configure MySQL
 
+### Install steps
+
+### Configuration
+
+First you need to sign in as your root user
+
+```sql
+mysql -u root -p
+```
+
+```sql
+CREATE DATABASE muskox_db;
+```
+> Don't forget to add the semi-colon to the end of your command! In SQL this is the indicator to execute what has been written.
+
 ## Create your Rails Project
 
 run in your console the following command:
