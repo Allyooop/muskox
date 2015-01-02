@@ -5,15 +5,15 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-muskox/.bundle
+/muskox/.bundle
 
 # Ignore the default SQLite database.
 muskox/db/*.sqlite3
-muskox/db/*.sqlite3-journal
-
+/muskox/db/*.sqlite3-journal
+/
 # Ignore all logfiles and tempfiles.
-muskox/log/*.log
-muskox/tmp
+/muskox/log/*.log
+/muskox/tmp
 
 # Ignore secrets and API keys
-muskox/config/secrets.yml
+/muskox/config/secrets.yml

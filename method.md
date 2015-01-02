@@ -20,7 +20,18 @@ First you need to sign in as your root user
 mysql -u root -p
 ```
 
-This will prompt you for your password, set when you first installed MySQL
+This will prompt you for your password, set when you first installed MySQL.
+
+Right, first let's create an app specific user. To do this, enter:
+
+```sql
+CREATE USER 'rails'@'localhost' IDENTIFIED BY 'secure-password';
+```
+
+This tells the database to create a user who can access the MySQL database locally (same place the db is located) who has, or is "IDENTIFIED", by the password within the ''.
+
+> Feel free to change those values. The actual words secure-password is not exactly secure!
+> Insert cartoon about having a secure password
 
 ```sql
 CREATE DATABASE muskox_db;
