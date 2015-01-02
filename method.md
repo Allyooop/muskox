@@ -20,6 +20,8 @@ First you need to sign in as your root user
 mysql -u root -p
 ```
 
+This will prompt you for your password, set when you first installed MySQL
+
 ```sql
 CREATE DATABASE muskox_db;
 ```
@@ -43,6 +45,8 @@ The "flags" we raised are `-d mysql` and `-T` which stand for:
 * `-T` = remove default test framework
 
 We designated mysql as the database we wanted to use with the `-d` flag and we did that by writing it after.
+
+make sure you `cd muskox` afterwards to move into the directory. If you don't the following commands won't work.
 
 ## Create your User model and set up Devise
 
