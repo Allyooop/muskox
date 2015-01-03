@@ -27,7 +27,7 @@ Running the `mysql -u root -p` command will prompt you for your password, set wh
 
 Insert that right now.
 
-> **ProTip** - remember, you don't need to run the mysql> part of the command, that is just for illustration. Same with the bits between the ```/* I AM A COMMENT */``` The rest is good to run.
+> **ProTip** - remember, you don't need to run the ```/* I AM A COMMENT */``` bit of my code. That is there for futher explanation. The rest however, is good to run.
 
 #### Create your db user
 
@@ -110,7 +110,11 @@ We designated mysql as the database we wanted to use with the `-d` flag and we d
 
 make sure you `cd muskox` afterwards to move into the directory. If you don't the following commands won't work.
 
-## Create your User model and set up Devise
+## Create your homepage
+
+## Create your User model
+
+## Set up Devise
 
 ## Scaffold your Article model
 
