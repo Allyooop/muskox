@@ -110,6 +110,57 @@ We designated mysql as the database we wanted to use with the `-d` flag and we d
 
 make sure you `cd muskox` afterwards to move into the directory. If you don't the following commands won't work.
 
+## Setting up your Rails DB
+
+Our next step is to ensure our database is configured correctly with Rails. Rails is pretty awesome but it is not a mind-reader. We'll have to make sure we get our MySQL database connected and talking to each other.
+
+Inside your rails project, find open up the **database.yml** file located in the **/config** folder.
+
+Opening that up, you will see something like this:
+
+```yml
+# ~/config/database.yml
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: muskox_developments
+```
+This is a YAML file. YAML stands for "Yet Another Markup Language". To find out more about YAML, see the [website]().
+
+YAML is a data syntax which has a **key** and a corresponding **value** next to it. Key-value pairs are a really common concept in computer science so it worth getting.
+
+#### Key-value
+
+A key-value relationship is very simple but important to get right. If you have ever looked at a history book or an excel chart you would have used one.
+
+Taking a chart as our example, lets say our key is **"revenue made in a certain year"** and our value how much we made. Each year we update our key-value pair to create a chart. Here is our potential YAML file with the key first and the value second:
+
+```yaml
+revenue_in_2014: 10
+revenue_in_2013: 20
+revenue_in_2012: 25
+```
+Besides needing a new job, we could turn it into a chart that looked like this:
+
+> INSERT CHART IMAGE
+
+Like you have likely seen before, that chart is made up of a key, our revenue in a particular year, and a value, the amount we made.
+
+Hopefully that has helped a little bit.
+
+> Another way of thinking about keys and values is like a spreadsheet with lots of cells. In one row you have things like: name, job, city. These are the keys. In a row below you have things like: Andrew, Developer, Sheffield. So, in one row you have a key and the other a value with each value belonging to a key.
+
+
+
+
+
 ## Create your homepage
 
 ## Create your User model
