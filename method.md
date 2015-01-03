@@ -178,7 +178,10 @@ development:
   <<: *default
   database: muskox_db
 ```
+We have updated the default values in the default and development areas with our MySQL username, password, dbname and password.
 
+> If you chose your own MySQL db name etc. make sure this file reflects that.
+> On, and yes. Just putting your password into a file like this is **NOT** secure. When we come to putting this product online we'll do something a lot better but for now we'll settle for this.
 
 ## Create your homepage
 
