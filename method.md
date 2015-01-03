@@ -157,8 +157,27 @@ Hopefully that has helped a little bit.
 
 > Another way of thinking about keys and values is like a spreadsheet with lots of cells. In one row you have things like: name, job, city. These are the keys. In a row below you have things like: Andrew, Developer, Sheffield. So, in one row you have a key and the other a value with each value belonging to a key.
 
+#### Back to our database.yml file
 
+So, in terms of our database.yml file we need to update the key value pairs with information that relates to our database we created.
 
+The default keys are inhereted by the "development", "test" and "production" sections. That is, you define general keys and values at the top and the rest of the sections use this syntax ```<<: *default``` to use all those keys and values without having to repeat them.
+
+So, we need to update your info. Write the following:
+
+```yaml
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: rails
+  password: secure-password
+  host: localhost
+
+development:
+  <<: *default
+  database: muskox_db
+```
 
 
 ## Create your homepage
