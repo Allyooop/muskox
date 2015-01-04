@@ -108,7 +108,38 @@ The "flags" we raised are `-d mysql` and `-T` which stand for:
 
 We designated mysql as the database we wanted to use with the `-d` flag and we did that by writing it after.
 
-make sure you `cd muskox` afterwards to move into the directory. If you don't the following commands won't work.
+make sure you `cd muskox` afterwards to move into the directory. If you don't the following commands throughout the chapter won't work.
+
+Because we removed the default test framework we also have to plug one back in. Let's make sure we have a test framework set up. We'll also remove a Gem from our gemfile to make things as human readable as possible.
+
+## Updating your Gemfile
+
+Let's do two things to our gemfile. First, let's remove the test framework with RSpec. RSpec is the most popular testing framework for Rails so let's use that.
+
+Because this book isn't about testing, we will be pretty light on the testing angle but to make sure we have something we'll also install an automatic testing framework which helps us build something so if you build additional functionality, you'll know when you've broken your app.
+
+Add to your gemfile the following things:
+
+```ruby
+# Add additional testing gems to project
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'zapata'
+end
+```
+
+Awesome. The ```group``` keyword allocates the following things into specific grouos degined in your rails environments, with the defaults being :development, :test and :production.
+
+> further explanation
+
+Now, lets remove the rails-coffeescript gem. We are going to do this just so that we create plain old JavaScript instead of coffeescript files. JavaScript is easier for developers in the early stage of their career and I personally prefer it.
+
+Locate your Gemfile again and **remove** the following:
+
+```ruby
+# remove coffescript gem from project
+gem 'coffee-rails', '~> 4.0.0'
+```
 
 ## Setting up your Rails DB
 

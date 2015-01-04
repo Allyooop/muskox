@@ -14,8 +14,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-# Additional 
-
+# Additional testing gems
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'zapata'
