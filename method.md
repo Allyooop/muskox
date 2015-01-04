@@ -140,6 +140,19 @@ Locate your Gemfile again and **remove** the following:
 # remove coffescript gem from project
 gem 'coffee-rails', '~> 4.0.0'
 ```
+Everything you update your gemfile for your Rails project you should run bundle install. From the project directory run:
+
+```bash
+bundle install
+```
+
+After that we just need to initalize our RSpec testing framework. Run the following command:
+
+```bash
+rails generate rspec:install
+```
+
+That should run a Rails command to create four things. That is all for now, let's get back to setting up our Rails app.
 
 ## Setting up your Rails DB
 
@@ -249,13 +262,21 @@ We will also touch on Rails routing to make sure that when someone goes to the r
 
 Throughout this chapter we will also add some styles to our app so it doesn't look terrible. We will use SASS which is a developer friendly CSS preprocessor (essentially CSS with developer focused shortcuts ) 
 
-#### Update gemfile
-
-remove coffeescript, add puma
-
 #### generate our first controller
 
-rails generate controller pages index
+Let's create our first meaningful additon to the app!
+
+> You'll be happy to know, as far as configuration, that is most of it for the book apart from deployment!
+
+We are going to heavily leverage the default Rails generators. You can generate a lot from the command line. Each of the available generators require certain things to be added.
+
+Essentially the pattern you follow is ```rails g``` (g is shorthand for generate) followed by the resource you want to generate, the name of the resource and then any optional things you want the generated resource to contain (like a page called index or a database column of people's names etc.)
+
+Following this pattern, lets create a "controller" named pages with a webpage called index. To do so, run the following command:
+
+```bash
+rails g controller Pages index
+```
 
 gem gem-command resource-to-generate name-of-resource sub-resource
 
