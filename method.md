@@ -118,7 +118,7 @@ Inside your rails project, find open up the **database.yml** file located in the
 
 Opening that up, you will see something like this:
 
-```yml
+```yaml
 # ~/config/database.yml
 default: &default
   adapter: mysql2
@@ -132,7 +132,7 @@ development:
   <<: *default
   database: muskox_developments
 ```
-This is a YAML file. YAML stands for "Yet Another Markup Language". To find out more about YAML, see the [website]().
+This is a YAML file (.yml and .yaml are the common file names). YAML stands for YAML Ain't Markup Language. If that self-referential statement sounds weird, it's because it used to be called "Yet Another Markup Language" but does little markup in the sense of HTML and the creators wanted to ensure people knew it wasn't a language like HTML. Still confused? Don't worry about it. To find out more about YAML, see the [YAML website](http://www.yaml.org/).
 
 YAML is a data syntax which has a **key** and a corresponding **value** next to it. Key-value pairs are a really common concept in computer science so it worth getting.
 
@@ -183,7 +183,56 @@ We have updated the default values in the default and development areas with our
 > If you chose your own MySQL db name etc. make sure this file reflects that.
 > On, and yes. Just putting your password into a file like this is **NOT** secure. When we come to putting this product online we'll do something a lot better but for now we'll settle for this.
 
+Right, let's check that everything is connected correctly. In your terminal run the command to start the default rails server:
+
+```bash
+# you can also run "rails s" with s being shorthand for server
+rails server
+```
+
+This should boot up your WEBrick server with the second line indicating which URL the rails app is working on:
+
+```bash
+=> Rails 4.1.8 application starting in development on http://0.0.0.0:3000
+```
+
+Visit that address in your browser and if you have everything set up right you'll see the traditional new rails app homepage
+
+> INSERT PIC
+
+If that isn't what you see, try and troubleshoot with the info provided. Some of your issues may be:
+
+* Have you entered the right URL?
+* Is your MySQL server running?
+* Have you entered ALL of the details correctly?
+* Did you run Rails S, what is that saying?
+* Are you in the Rails directory when you ran that command?
+
+Hopefully everything is working smoothly. Right, time to do some building. In the next chapter we'll create our homepage
+
 ## Create your homepage
+
+In this chapter we are going to create our basic homepage. We are going to use the default rails generators to do use. We will then add our first "views" so that we can see this site.
+
+We will also touch on Rails routing to make sure that when someone goes to the route "/" they see the homepage we have designed rather than the basic rails app homepage.
+
+Throughout this chapter we will also add some styles to our app so it doesn't look terrible. We will use SASS which is a developer friendly CSS preprocessor (essentially CSS with developer focused shortcuts ) 
+
+#### Update gemfile
+
+remove coffeescript, add puma
+
+#### generate our first controller
+
+rails generate controller pages index
+
+gem gem-command resource-to-generate name-of-resource sub-resource
+
+#### update our root routes
+
+#### update corresponding view file
+
+#### add some further styling
 
 ## Create your User model
 
