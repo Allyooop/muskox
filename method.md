@@ -281,15 +281,7 @@ This is will create a lot of files. Before we get into what it created, let's lo
 
 As mentioned we ran the ```rails g``` command. We followed that with what resource we wanted to create (a controller) the name of our controller ```Pages```, which we added a sub-resource called ```index``` (which in terms of creating a controller, is a method called index).
 
-So, when we ran that command we created ALOT of files. They are all really simple BUT, it can be a little bit intimidating to see them all at once when you are learning Rails.
-
-Lets go through what's happening. 
-
-1. rails creates a file called pages_controller.rb in your /app/controllers/ folder
-2. It used the invoke erb command to call the erb templating resource to do some work
-3. the erb resource creates a folder called /pages/ inside the /app/views/ folder and within that creates an erb file called index.html.erb
-4. the rspec gem is then called on to do some work itself
-5. it creates a
+So, when we ran that command we created ALOT of files. They are all really simple BUT, it can be a little bit intimidating to see them all at once when you are learning Rails. Here is what it looks like:
 
 
 ```bash
@@ -313,8 +305,25 @@ Lets go through what's happening.
       create      app/assets/stylesheets/pages.css.scss  
 ```
 
+Lets go through what's happening. 
 
-gem gem-command resource-to-generate name-of-resource sub-resource
+1. Rails creates a file called pages_controller.rb in your /app/controllers/ folder
+2. Rails updates your routes file with one that responds to 'pages/index'
+3. Rails uses the invoke erb command to call the erb templating resource to do some work
+4. the erb resource creates a folder called /pages/ inside the /app/views/ folder and within that creates an erb file called index.html.erb
+5. the rspec gem is then called on to do some work itself
+6. it creates a spec or group of tests for your controller and mirrors what erb created with tests for everything
+7. the helper resource is called
+8. the helper resource creates a file
+9. the rspec gem is invoked again
+10. rspec creates a test file for the helper file
+11. the asset resource (gems etc.) are asked to do some work
+12. the JavaScript part of your asset resources is called first
+13. the JavaScript asset resource creates a pages.js file
+14. your SCSS asset resource is the called
+15. your SCSS resource creates a pages.css.scss file to let you style your page views
+
+Well, that was a lot of info. Feel free to explore what was created in those files. Google everything and anything you don't understand or interests you. In our next section we'll take a look at our route file.
 
 #### update our root routes
 
