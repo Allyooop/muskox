@@ -277,6 +277,42 @@ Following this pattern, lets create a "controller" named pages with a webpage ca
 ```bash
 rails g controller Pages index
 ```
+This is will create a lot of files. Before we get into what it created, let's look at what we asked Rails to generate.
+
+As mentioned we ran the ```rails g``` command. We followed that with what resource we wanted to create (a controller) the name of our controller ```Pages```, which we added a sub-resource called ```index``` (which in terms of creating a controller, is a method called index).
+
+So, when we ran that command we created ALOT of files. They are all really simple BUT, it can be a little bit intimidating to see them all at once when you are learning Rails.
+
+Lets go through what's happening. 
+
+1. rails creates a file called pages_controller.rb in your /app/controllers/ folder
+2. It used the invoke erb command to call the erb templating resource to do some work
+3. the erb resource creates a folder called /pages/ inside the /app/views/ folder and within that creates an erb file called index.html.erb
+4. the rspec gem is then called on to do some work itself
+5. it creates a
+
+
+```bash
+ create  app/controllers/pages_controller.rb                    
+       route  get 'pages/index'                                      
+      invoke  erb                                                    
+      create    app/views/pages                                      
+      create    app/views/pages/index.html.erb                       
+      invoke  rspec                                                  
+      create    spec/controllers/pages_controller_spec.rb            
+      create    spec/views/pages                                     
+      create    spec/views/pages/index.html.erb_spec.rb              
+      invoke  helper                                                 
+      create    app/helpers/pages_helper.rb                          
+      invoke    rspec                                                
+      create      spec/helpers/pages_helper_spec.rb                  
+      invoke  assets                                                 
+      invoke    js                                                   
+      create      app/assets/javascripts/pages.js                    
+      invoke    scss                                                 
+      create      app/assets/stylesheets/pages.css.scss  
+```
+
 
 gem gem-command resource-to-generate name-of-resource sub-resource
 
