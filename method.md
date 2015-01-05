@@ -376,7 +376,9 @@ root 'pages#index'
 
 So, to set something as root we must offer inside quotes our choice of controller and "action" or method. In our case we only have one controller and one action/method and that is our pages controller and index method.
 
-With the Rails server still running - if not run ```rails s``` again - go to your root url ```localhost:3000``` and you should see our rather boring generated page again. 
+With the Rails server still running - if not run ```rails s``` again - go to your root url ```localhost:3000``` and you should see our rather boring generated page again.
+
+> Now might be a good time to rattle along your own track and create another controller or extend the current one?. Can you set up an about page?
 
 #### update corresponding view file
 
