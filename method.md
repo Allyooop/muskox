@@ -374,13 +374,51 @@ Don't worry if you couldn't get it right. What you needed to add below ```get 'p
 root 'pages#index'
 ```
 
-So, to set something as root we must offer inside quotes our choice of controller and "action" or method. In our case we only have one controller and one action/method and that is our pages controller and index method.
+So, to set something as root we must offer inside quotes our choice of controller and "action" or method after the word root. In our case we only have one controller and one action/method and that is our pages controller and index method.
 
-With the Rails server still running - if not run ```rails s``` again - go to your root url ```localhost:3000``` and you should see our rather boring generated page again.
+Add that line in now.
+
+With the Rails server still running - if not, run ```rails s``` again - go to your root url ```localhost:3000``` and you should see our rather boring generated page again, but this time at the root url. Success!
 
 > Now might be a good time to rattle along your own track and create another controller or extend the current one?. Can you set up an about page?
 
 #### update corresponding view file
+
+Lets add a touch of branding to our app so it doesn't look completely sparse. I won't go through too much here as we are just adding a baseline look and we will do more here later.
+
+
+
+##### add basic navbar
+
+Right, lets add a very basic navbar to our basic layout. To do this we will create a partial called ```_navbar.html.erb```.
+
+It is convention in Ruby and Rails that any partial, an element that is injected into another to make a whole template, is named with an underscore first. This way, when a developer, or yourself, looks at a file with an underscore they know that they are the small modules that make up a larger whole somewhere else.
+
+Right, create our navbar partial in our ```app/views/layouts/``` directory called ```_navbar.html.erb```. Fill it with the basic HTML below:
+
+```html
+<!-- put the navbar in /app/views/layouts/application.html.erb -->
+  <nav>
+    <div id="nav-container">
+     <ul>
+      <li><a href="#">Muskox</a></li>
+    </ul>
+    </div>
+  </nav>
+```
+
+Working in the same directory, we need to update our ```application.html.erb``` file to include the partial.
+
+In ```/app/views/layouts/application.html.erb``` add the following:
+
+```rails
+<%= render "layouts/menu" %>
+```
+
+> ## How do ERB!
+> to find out more about rendering and layouts, a great resource is [the Rails Docs that cover this subject](http://guides.rubyonrails.org/layouts_and_rendering.html)
+
+
 
 #### add some further styling
 
