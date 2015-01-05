@@ -327,6 +327,57 @@ Well, that was a lot of info. Feel free to explore what was created in those fil
 
 #### update our root routes
 
+In this section we'll update our routes file and hopefully get a better sense of how our rails app is wired together.
+
+Locate your routes.rb file which should be found here ```~/muskox/config/routes.rb```.
+
+There are a lot of comments in this file. Feel free to keep them and read them, but at the moment the most important information is located between ```Rails.application.routes.draw do end```. Namely our custom pages controller's index page.
+
+So, at this stage we have one single route we added ourselves. 
+
+> If you ever need to know what routes are available to your webapp, just run ```rake routes``` in your terminal. Right now, ours looks like this:
+```bash              
+Prefix Verb URI Pattern            Controller#Action            
+pages_index GET  /pages/index(.:format) pages#index  
+```
+
+When people go to our webapp with the URL of ```localhost:3000/pages/index``` they will get our newly created index.html.erb file served by our pages_controller.rb controller.
+
+So, the route is defined by using the HTTP verb "get" with the "URI pattern" of '/pages/index' which Rails matches to our controller named pages and method called index.
+
+That method, called index, automatically looks for a .html.erb file called index inside the views folder. Naturally you can override this, but as Rails does all the wiring automatically, it is best not to.
+
+Sometimes it is also easier to understand something with a diagram, so here is the process Rails goes through to render a webapge:
+
+> INSERT IMAGE
+
+Let's have a look at everything working. Fire up your server by running:
+
+```bash
+# s is shorthand for server
+rails s
+```
+
+you should see the following webpage:
+
+> INSERT IMAGE (rails_app_screenshot_basic_route.png)
+
+Not exactly the most beautiful thing in the world but we are getting somewhere.
+
+Now, we don't just want this page to be something people have to find through the pages URL, we want it to be our homepage.
+
+In Rails terminology, we wanted to make it our "root". The explanation of how to do this is in the comments of the routes.rb file. Can you work out how to add it?
+
+Don't worry if you couldn't get it right. What you needed to add below ```get 'pages/index'``` was:
+
+```ruby
+root 'pages#index'
+```
+
+So, to set something as root we must offer inside quotes our choice of controller and "action" or method. In our case we only have one controller and one action/method and that is our pages controller and index method.
+
+With the Rails server still running - if not run ```rails s``` again - go to your root url ```localhost:3000``` and you should see our rather boring generated page again. 
+
 #### update corresponding view file
 
 #### add some further styling
