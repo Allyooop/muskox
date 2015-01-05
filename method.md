@@ -418,6 +418,45 @@ In ```/app/views/layouts/application.html.erb``` add the following:
 > ## How do ERB!
 > to find out more about rendering and layouts, a great resource is [the Rails Docs that cover this subject](http://guides.rubyonrails.org/layouts_and_rendering.html)
 
+Let's add some very basic SCSS. In our app/assets/stylesheets/application.css.scss file add the following:
+
+```sass
+body {
+  background-color: #F7F1F2;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  #main {
+    padding: 70px;
+  }
+}
+
+nav {
+  background-color: #fff;
+  padding: 30px;
+  
+  #nav-controller{
+    max-width:800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  li {
+    display: inline;
+    padding: 10px;
+  }
+  
+  a {
+    color: #E53935;
+    text-decoration: none;
+    font-size: 20px;
+  }
+}
+```
+
+> ## Super Sprockets
+> Sprockets are a key part of the "Rails asset pipeline". 
+> Essentially the tooling
 
 
 #### add some further styling
