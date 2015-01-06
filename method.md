@@ -435,7 +435,7 @@ nav {
   background-color: #fff;
   padding: 30px;
   
-  #nav-controller{
+  .nav-container{
     max-width:800px;
     margin-left: auto;
     margin-right: auto;
