@@ -320,8 +320,8 @@ Lets go through what's happening.
 11. the asset resource (gems etc.) are asked to do some work
 12. the JavaScript part of your asset resources is called first
 13. the JavaScript asset resource creates a pages.js file
-14. your SCSS asset resource is the called
-15. your SCSS resource creates a pages.css.scss file to let you style your page views
+14. your Scss asset resource is the called
+15. your Scss resource creates a pages.css.scss file to let you style your page views
 
 Well, that was a lot of info. Feel free to explore what was created in those files. Google everything and anything you don't understand or interests you. In our next section we'll take a look at our route file.
 
@@ -418,7 +418,7 @@ In ```/app/views/layouts/application.html.erb``` add the following:
 > ## How do ERB!
 > to find out more about rendering and layouts, a great resource is [the Rails Docs that cover this subject](http://guides.rubyonrails.org/layouts_and_rendering.html)
 
-Let's add some very basic SCSS. In our app/assets/stylesheets/application.css.scss file add the following:
+Let's add some very basic Scss. In our app/assets/stylesheets/application.css.scss file add the following:
 
 ```sass
 body {
