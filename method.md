@@ -421,7 +421,7 @@ This file will be where we declare our global variables like colors and fonts.
 
 Inside this file, delete the comments and content and replace it with:
 
-```sass
+```scss
 $brand-font: Arial, Helvetica, sans-serif;
 $brand-color: #E53935;
 $brand-grey: #F7F1F2;
@@ -433,7 +433,7 @@ Anything with a ```$``` in front of it is a variable in Sass. A variable is a re
 
 In our ```application.css.scss``` file delete the contents and write the following:
 
-```sass
+```scss
 @import "variables";
 /*
  *
