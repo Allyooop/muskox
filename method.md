@@ -63,13 +63,10 @@ GRANT ALL PRIVILEGES ON muskox_db.* TO 'rails'@'localhost' IDENTIFIED BY 'secure
 
 This command gives the new user we created called rails the ability to edit our muskox_db. The parts of the command break down to:
 
-```GRANT ALL PRIVILEGES ON``` = give the ability edit the following db
-
- ```muskox_db.*``` [or whatever db you called it!] = the database and tables the command to allow a user to edit relates to
-
-```TO 'rails'@'localhost'``` = user the command relates to
-
-```IDENTIFIED BY 'secure-password'``` = as long as they have the password of secure-password
+* ```GRANT ALL PRIVILEGES ON``` = give the ability edit the following db
+* ```muskox_db.*``` [or whatever db you called it!] = the database and tables the command to allow a user to edit relates to
+* ```TO 'rails'@'localhost'``` = user the command relates to
+* ```IDENTIFIED BY 'secure-password'``` = as long as they have the password of secure-password
 
 So altogether, give the ability to edit the database muskox_db and all the data and tables within it to the user called rails as long as it is using secure-password as the password.
 
@@ -386,8 +383,6 @@ With the Rails server still running - if not, run ```rails s``` again - go to yo
 
 Lets add a touch of branding to our app so it doesn't look completely sparse. I won't go through too much here as we are just adding a baseline look and we will do more here later.
 
-
-
 ##### add basic navbar
 
 Right, lets add a very basic navbar to our basic layout. To do this we will create a partial called ```_navbar.html.erb```.
@@ -399,7 +394,7 @@ Right, create our navbar partial in our ```app/views/layouts/``` directory calle
 ```html
 <!-- put the navbar in /app/views/layouts/application.html.erb -->
   <nav>
-    <div id="nav-container">
+    <div class="nav-container">
      <ul>
       <li><a href="#">Muskox</a></li>
     </ul>
@@ -409,7 +404,7 @@ Right, create our navbar partial in our ```app/views/layouts/``` directory calle
 
 Working in the same directory, we need to update our ```application.html.erb``` file to include the partial.
 
-In ```/app/views/layouts/application.html.erb``` add the following:
+In ```/app/views/layouts/application.html.erb``` add the following just above the ```<%= yield %>:
 
 ```rails
 <%= render "layouts/menu" %>
@@ -418,13 +413,37 @@ In ```/app/views/layouts/application.html.erb``` add the following:
 > ## How do ERB!
 > to find out more about rendering and layouts, a great resource is [the Rails Docs that cover this subject](http://guides.rubyonrails.org/layouts_and_rendering.html)
 
-Let's add some very basic Scss. In our app/assets/stylesheets/application.css.scss file add the following:
+Let's add some basic Scss.
+
+First rename ```pages.css.scss``` to ```_variables.css.scss```
+
+This file will be where we declare our global variables like colors and fonts.
+
+Inside this file, delete the comments and content and replace it with:
 
 ```sass
+$brand-font: Arial, Helvetica, sans-serif;
+$brand-color: #E53935;
+$brand-grey: #F7F1F2;
+```
+
+Anything with a ```$``` in front of it is a variable in Sass. A variable is a reusable bit of CSS. So in the future, instead of having to remember the actual code for our red brand colour we can just write ```$brand-color```.
+
+> Variable are one of the key strengths of Sass over plain old CSS. For a quick run down of the great things Sass introduces see [the Sass website for more info](http://sass-lang.com/guide).
+
+In our ```application.css.scss``` file delete the contents and write the following:
+
+```sass
+@import "variables";
+/*
+ *
+ *= require_self
+ */
+
 body {
-  background-color: #F7F1F2;
+  background-color: $brand-grey;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $brand-font;
   
   #main {
     padding: 70px;
@@ -436,9 +455,7 @@ nav {
   padding: 30px;
   
   .nav-container{
-    max-width:800px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 20px;
   }
   
   li {
@@ -447,21 +464,68 @@ nav {
   }
   
   a {
-    color: #E53935;
+    color: $brand-color;
     text-decoration: none;
     font-size: 20px;
   }
 }
 ```
+Here on the first line we are importing the ```_variables.css.scss``` file. We don't need to include the underscore or the file extension. Sass is smart enough to know your importing a Sass file. Just make sure you have the semi-colon after each import statement. If you don't your app will blow up with Sass errors.
+
+> You might ask what is the point of an underscore? Well, it tells Sass that you don't want it to be converted to CSS. That is, you are using it to be imported somewhere so you can control the order of your Sass rather than be turned into an individual file called variables.css. If you don't include the underscore Sass may try to convert it to CSS which is not what we want.
+
+The comments that come after the import statement are the "sprocket" asset pipeline syntax. Essentially this is where we tell Rails what to require and how to order things. I like to keep this simple so all i am doing is telling Rails to compile everything in that file (including what is in that file) into ```application.css```.
 
 > ## Super Sprockets
 > Sprockets are a key part of the "Rails asset pipeline". 
 > Essentially the tooling
 
+Inside this file you should also see where we have used the Sass variables. We imported our variables and put them to use to define our ```background-color```, ```font-family``` and link ```color```.
 
-#### add some further styling
+Another thing you may notice about our file is that be can embed elements inside other elements like so:
+
+```sass
+.mother {
+  .daughter {
+  
+  }
+  .son {
+  
+  }
+}
+```
+
+This allows you to nest elements and classes with ease but also create powerful namespaces for your CSS without the overhead of manually writing lots of CSS.
+
+That wasn't a ton of extra styling but we've added a touch of class to our app. We'll return to that later as our app gets fleshed out futher.
 
 ## Create your User model
+
+In order to kickstart out app we need to create our database model of our users.
+
+Any quality app reflects serious thinking about what makes a good model or representation of the thing we want to build.
+
+When it comes to a user, we need to think about what we need to use within the app, but also what our users will expect to reflect. That is, they may want the ability to indicate individual authorship or specialisms.
+
+Luckily we don't have to be perfect with Rails. There is always the ability to add and improve on our models later.
+
+For now, let's represent our users with the following database information:
+
+First name
+Last name
+organization
+biography
+Job title
+email
+password
+
+To do this, we'll set up a basic version of this as a generic Rails model, afterwards adding the powerful authentication gem Devise to provide the management of passwords, signing in and emails.
+
+Back into the command line run the following command:
+
+```bash
+rails g model User first_name string last_name string organization biography text job_title: string
+```
 
 ## Set up Devise
 
