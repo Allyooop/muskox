@@ -524,7 +524,7 @@ To do this, we'll set up a basic version of this as a generic Rails model, after
 Back into the command line run the following command:
 
 ```bash
-rails g model User first_name string last_name string organization biography text job_title: string
+rails g model User first_name:string last_name:string organization:string biography:text job_title:string
 ```
 
 ## Set up Devise
