@@ -527,10 +527,19 @@ Back into the command line run the following command:
 rails g model User first_name:string last_name:string organization:string biography:text job_title:string
 ```
 
+This will invoke activerecord to create a "migration", a file that represents our user model called ```app/models/user.rb``` as well as well an Rspec test for that model
+
+> A database migration is essentially a map of your database. The migration name  refers to the fact that in Rails it represents an image of your database's scheme or structure at a particular moment in time. You can therefore move forward or baskwards through your migrations. To learn more about Rails and database migrations, see the [Rails ActiveRecord Migrations documentation](http://edgeguides.rubyonrails.org/active_record_migrations.html).
+
+
 ## Set up Devise
+
+
+
 
 ## Scaffold your Article model
 
-## Scaffold your service model
+## Scaffold your s## Scaffold your service model
+ervice model
 
 ## Scaffold your directory model
