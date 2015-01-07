@@ -612,6 +612,13 @@ Let's put it into our app. Crack open the Gemfile and add the following gem anyw
 gem 'devise'
 ```
 
+Whenever you update your gemfile you need to run bundle install. Do that now:
+
+```
+# update gemfile
+bundle install
+```
+
 The next thing to do is install the devise "engine". A Rails Engine is a modular app that sits within Rails and provides extended functionality like authentication, content management abilities etc.
 
 To install devise run the following command:
@@ -620,6 +627,54 @@ To install devise run the following command:
 rails generate devise:install
 ```
 
+This will create a devise.rb initializer file as well as a language .yml file
+
+
+```bash
+     create  config/initializers/devise.rb                          
+      create  config/locales/devise.en.yml                           
+=====================================================================
+==========                                                           
+                                                                     
+Some setup you must do manually if you haven't yet:                  
+                                                                     
+  1. Ensure you have defined default url options in your environments
+ files. Here        config.action_mailer.default_url_options = { host: 'localhost'
+, port: 3000 }                                                       
+                                                                     
+     In production, :host should be set to the actual host of your ap
+plication.                                                           
+                                                                     
+  2. Ensure you have defined root_url to *something* in your config/r
+outes.rb.                                                            
+     For example:                                                    
+                                                                     
+       root to: "home#index"                                         
+                                                                     
+  3. Ensure you have flash messages in app/views/layouts/application.
+html.erb.                                                            
+     For example:                                                    
+                                                                     
+       <p class="notice"><%= notice %></p>                           
+       <p class="alert"><%= alert %></p>                             
+                                                                     
+  4. If you are deploying on Heroku with Rails 3.2 only, you may want
+ to set:                                                             
+                                                                     
+       config.assets.initialize_on_precompile = false                
+                                                                     
+     On config/application.rb forcing your application to not access 
+the DB                                                               
+     or load models when precompiling your assets.                   
+                                                                     
+  5. You can copy Devise views (for customization) to your app by run
+ning:                                                                
+                                                                     
+       rails g devise:views                                          
+                                                                     
+=====================================================================
+==========       
+```
 
 
 ## Scaffold your Article model
