@@ -584,8 +584,41 @@ This will output something like the below:
 ==========   
 ```
 
+We are pretty much ready to use the powerful Gem Device but first let's update our user.rb model file to include what fields in the database are included.
+
+This is a personal thing but to me it seems vital to clarity to highlight what each model has in its database. To that end, add the following to our ```app/models/user.rb``` file:
+
+```ruby
+# update app/models/user.rb
+class User < ActiveRecord::Base
+  #   string :first_name
+  #   string :last_name
+  #   string :organization
+  #   text :biography
+  #   string :job_title
+  
+end
+```
+
+Awesome. let's set up Devise.
+
 ## Set up Devise
 
+Devise is a very popular Gem that quickly provides any Rails app with the parts needed to handle user sign-ins, registration and all manner of authentication.
+
+Let's put it into our app. Crack open the Gemfile and add the following gem anywhere you like:
+
+```ruby
+gem 'devise'
+```
+
+The next thing to do is install the devise "engine". A Rails Engine is a modular app that sits within Rails and provides extended functionality like authentication, content management abilities etc.
+
+To install devise run the following command:
+
+```bash
+rails generate devise:install
+```
 
 
 
