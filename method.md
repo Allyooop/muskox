@@ -421,7 +421,7 @@ This file will be where we declare our global variables like colors and fonts.
 
 Inside this file, delete the comments and content and replace it with:
 
-```scss
+```sass
 $brand-font: Arial, Helvetica, sans-serif;
 $brand-color: #E53935;
 $brand-grey: #F7F1F2;
@@ -433,7 +433,7 @@ Anything with a ```$``` in front of it is a variable in Sass. A variable is a re
 
 In our ```application.css.scss``` file delete the contents and write the following:
 
-```scss
+```sass
 @import "variables";
 /*
  *
@@ -531,6 +531,36 @@ This will invoke activerecord to create a "migration", a file that represents ou
 
 > A database migration is essentially a map of your database. The migration name  refers to the fact that in Rails it represents an image of your database's scheme or structure at a particular moment in time. You can therefore move forward or baskwards through your migrations. To learn more about Rails and database migrations, see the [Rails ActiveRecord Migrations documentation](http://edgeguides.rubyonrails.org/active_record_migrations.html).
 
+Let's look at our user model:
+
+```ruby
+# app/models/user.rb
+class User < ActiveRecord::Base
+end
+```
+
+Hmmm, not a lot happening there!
+
+Most of our changes are found in our unique migration file. My filename will be named differently than yours but it will be located in the same directory, namely ```/db/migrate/{numbers}_create_users.rb``` 
+
+Inside this file is a simple ruby class that creates the user table in our MySQL database.
+
+```ruby
+class CreateUsers < ActiveRecord::Migration
+  def change
+    create_table :users do |t|
+      t.string :first_name
+      t.string :last_name
+      t.string :organization
+      t.text :biography
+      t.string :job_title
+
+      t.timestamps
+    end
+  end
+end
+```
+
 
 ## Set up Devise
 
@@ -539,7 +569,6 @@ This will invoke activerecord to create a "migration", a file that represents ou
 
 ## Scaffold your Article model
 
-## Scaffold your s## Scaffold your service model
-ervice model
+## Scaffold your service model
 
 ## Scaffold your directory model
