@@ -543,7 +543,13 @@ Hmmm, not a lot happening there!
 
 Most of our changes are found in our unique migration file. My filename will be named differently than yours but it will be located in the same directory, namely ```/db/migrate/{numbers}_create_users.rb``` 
 
-Inside this file is a simple ruby class that creates the user table in our MySQL database.
+Inside this file is a simple ruby class and method that creates the user table in our MySQL database.
+
+In the method called change it creates a table with the name users and creates all of the columns after ```do``` using the placeholder ```|t|```.
+
+All of the things we asked Rails to create are there however, there is an extra one at the moment called ```t.timestamps```.
+
+This just creates a created_at and updated_at set of columns which are extremely helpful in versioning and tracking things in your database.
 
 ```ruby
 class CreateUsers < ActiveRecord::Migration
@@ -560,7 +566,23 @@ class CreateUsers < ActiveRecord::Migration
   end
 end
 ```
+To make sure that our database is up to date we need to run ```rake db:migrate``` which tells rake to action the database actions in our migration file. So, do that now, run:
 
+```bash
+# incorporate our user model into the database
+rake db:migrate
+```
+
+This will output something like the below:
+
+```bash
+== 20150107214248 CreateUsers: migrating ============================
+==========                                                           
+-- create_table(:users)                                              
+   -> 0.0149s                                                        
+== 20150107214248 CreateUsers: migrated (0.0151s) ===================
+==========   
+```
 
 ## Set up Devise
 
