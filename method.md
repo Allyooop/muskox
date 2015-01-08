@@ -627,14 +627,34 @@ To install devise run the following command:
 rails generate devise:install
 ```
 
-This will create a devise.rb initializer file as well as a language .yml file
+This will create a devise.rb initializer file as well as a language .yml file.
+
+```bash
+create  config/initializers/devise.rb                      
+create  config/locales/devise.en.yml     
+```
+
+We won't be touching these files so don't worry about them for now.
+
+There is a little bit of manual setup required for Devise and it outputs the steps needed in the command-line. Let's go through them and complete them all!
+
+1. define default url option in environment file
+
+To achive this, open your ```/config/environments/development.rb``` file add add the following line:
+
+```ruby
+config.action_mailer.default_url_options = { host: 'localhost'
+, port: 3000 }                                                       
+```
+
+What we are doing here is setting the default URL for our emailing system and the port to send email out from for deployment.
+
+This is naturally not a very robust system but it'll do for now.
+
 
 
 ```bash
-     create  config/initializers/devise.rb                          
-      create  config/locales/devise.en.yml                           
-=====================================================================
-==========                                                           
+
                                                                      
 Some setup you must do manually if you haven't yet:                  
                                                                      
