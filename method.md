@@ -649,22 +649,30 @@ config.action_mailer.default_url_options = { host: 'localhost'
 
 What we are doing here is setting the default URL for our emailing system and the port to send email out from for deployment.
 
-This is naturally not a very robust system but it'll do for now.
+2. have a root url in the routes.rb file
 
+We have already done this so we are good to continue
 
+3. Have "flash" messages included in the default layout erb file
+
+We haven't added these, so let's do so quickly.
+
+In our ```/app/views/layouts/application.html.erb``` file add the following two snippets just above the **yield** tag like so:
+
+```erb
+   <p class="notice"><%= notice %></p>                         
+   <p class="alert"><%= alert %></p> 
+ 
+  <div id="main">
+    <%= yield %>
+  </div>
+```
+
+This just adds two paragraphs styled by Devise that both contain any notices or alerts that Devise may need to send such as an incorrect password or an error of somekind.
 
 ```bash
 
-                                                                     
-Some setup you must do manually if you haven't yet:                  
-                                                                     
-  1. Ensure you have defined default url options in your environments
- files. Here        config.action_mailer.default_url_options = { host: 'localhost'
-, port: 3000 }                                                       
-                                                                     
-     In production, :host should be set to the actual host of your ap
-plication.                                                           
-                                                                     
+                                                         
   2. Ensure you have defined root_url to *something* in your config/r
 outes.rb.                                                            
      For example:                                                    
@@ -675,8 +683,7 @@ outes.rb.
 html.erb.                                                            
      For example:                                                    
                                                                      
-       <p class="notice"><%= notice %></p>                           
-       <p class="alert"><%= alert %></p>                             
+                            
                                                                      
   4. If you are deploying on Heroku with Rails 3.2 only, you may want
  to set:                                                             
