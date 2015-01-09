@@ -524,7 +524,7 @@ To do this, we'll set up a basic version of this as a generic Rails model, after
 Back into the command line run the following command:
 
 ```bash
-rails g model User first_name:string last_name:string organization:string biography:text job_title:string
+rails g model User first_name:string last_name:string organization:string biography:text job_title:string email:string
 ```
 
 This will invoke activerecord to create a "migration", a file that represents our user model called ```app/models/user.rb``` as well as well an Rspec test for that model
@@ -560,6 +560,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :organization
       t.text :biography
       t.string :job_title
+      t.string :email
 
       t.timestamps
     end
@@ -596,6 +597,7 @@ class User < ActiveRecord::Base
   #   string :organization
   #   text :biography
   #   string :job_title
+  #   string :email
   
 end
 ```
@@ -704,6 +706,52 @@ app/views/devise/mailer/unlock_instructions.html.erb
 ```
 
 That is a whole ton of files. Essentially they provide the forms for users to sign up, in and out of your app. We'll cover styling Devise later, for now let's move onto creating a blog-like article model.
+
+## Seeding your db and validation
+
+Whenever you set up something that can create, update, or delete things from your database you need to set up validations.
+
+That is, set up systems to make sure the data you want to be saved is saved.
+
+In Rails you can set up all manner of points to do this. That is, you can validate data on the "front-end" with the new HTML5 input attributes or JavaScript, with your controllers which can take and sanitize and check information before saving. You can also check or validate your data in your model. The reflection of your database and application's structure in code.
+
+In this section we will set this up for our user model before creating a few users to sign in with.
+
+#### add data validation
+
+Time to crack open our ```user.rb``` model.
+
+At the moment our User class inherits from ActiveRecord::Base all of Rails' default functionality. Let's pull in some of that to act on our user model.
+
+```ruby
+class User < ActiveRecord::Base
+  #   string :first_name
+  #   string :last_name
+  #   string :organization
+  #   text :biography
+  #   string :job_title
+  #   email :string
+end
+```
+
+Luckily we placed comments for each column in our database's user table so we can knock down each task without struggling.
+
+The most basic validation we want to enact here is that each database column is filled in.
+
+However, with our biography record we'll also want it to be longer than a couple of words, so we'll have to ask for a minimum length. 
+
+On the flipside though, we don't want John from Accounting to ramble on and on about his Hobbies so we'll need some kind of length limit.
+
+In regard to our email, we'll want to be sure that what people have provided is an email as well as being existing.
+
+Without a mature framework Rails, we would have to build a lot of this functionality ourselves.
+
+
+#### create a user controller
+
+#### seed the db and sign in
+
+#### create a view that reflects the user's name
 
 
 ## Scaffold your Article model
