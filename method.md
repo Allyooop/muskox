@@ -683,21 +683,21 @@ rails g devise:views
 This will create a folder within your views directory which contains the views. The folder is called **devise** stored within the ~/app/views/ folder. There are a lot of sub-folders and within them **.erb** files
 
 ```
-app/views/devise/shared                                         
+app/views/devise/shared/                                         
 app/views/devise/shared/_links.html.erb                         
-app/views/devise/confirmations                                  
+app/views/devise/confirmations/                                  
 app/views/devise/confirmations/new.html.erb                     
-app/views/devise/passwords                                      
+app/views/devise/passwords/                                      
 app/views/devise/passwords/edit.html.erb                        
 app/views/devise/passwords/new.html.erb                         
-app/views/devise/registrations                                  
+app/views/devise/registrations/                                  
 app/views/devise/registrations/edit.html.erb                    
 app/views/devise/registrations/new.html.erb                     
-app/views/devise/sessions                                       
+app/views/devise/sessions/                                       
 app/views/devise/sessions/new.html.erb                          
-app/views/devise/unlocks                                        
+app/views/devise/unlocks/                                        
 app/views/devise/unlocks/new.html.erb                           
-app/views/devise/mailer 
+app/views/devise/mailer/ 
 app/views/devise/mailer/confirmation_instructions.html.erb      
 app/views/devise/mailer/reset_password_instructions.html.erb    
 app/views/devise/mailer/unlock_instructions.html.erb 
