@@ -744,8 +744,50 @@ On the flipside though, we don't want John from Accounting to ramble on and on a
 
 In regard to our email, we'll want to be sure that what people have provided is an email as well as being existing.
 
-Without a mature framework Rails, we would have to build a lot of this functionality ourselves.
+If we hadn't chosen a mature framework like Rails, we would have to build a lot of this functionality ourselves.
 
+Luckily for us, Rails brings a lot of "magic".
+
+> The reality is NONE of this is magic. What has happened is a lot of developers have suffered building these things before and so often that they created all of the most common validations they could think of and gave Rails the ability to call these things. In your career as a developer you'll soon be extending, changing or building alternatives depending on special cases but Rails provides the basics you need.
+
+A great way to get to know what Rails provides is the Rails Guides. And thankfully Rails provides [an extensive summary of the validations on offer there](http://guides.rubyonrails.org/active_record_validations.html).
+
+I strongly recommend reading through that guide and every guide in the series several times. Don't ever be put off doing so. They are written by Rails experts.
+
+Looking at the examples we can see that adding a validation consists of:
+
+1. write the word validates
+2. refer to the database column in question,  like ```:email```
+3. select the validation method you prefer with any specific
+
+> insert picture backing this process up
+
+Right, enough of that, let's write some.
+
+Let's make sure our names are present. Add the following:
+
+```ruby
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+```
+
+If we were to do this for each that would be six lines. Not terrrible, but is there an easier way? yes.
+
+Let's refactor that code so that we validate the presence of all of our database columns at once. We can do it easily by just adding commas and our database columns like so:
+
+```ruby
+  validates :first_name, :last_name, :organization, :biography, :job_title, :email, presence: true
+```
+
+Awesome, now no one will be able to save anything to our database without an entry.
+
+Next let's ensure our biography is at least 120 characters long. Write the following:
+
+```ruby
+  validates :biography, length: { minimum: 120, too_short: "%{count} characters is too short, you need at least at least 120 characters" }
+```
+
+Here we have done something a little different! We have repeated the first two steps as before, offered the keyword validates and then the column we want to validate. But this time, we added an object which is attached to ```length:``` to provide some further configuration than just a minimum length.
 
 #### create a user controller
 
