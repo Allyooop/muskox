@@ -794,7 +794,7 @@ Here we have done something a little different! We have repeated the first two s
 > ```
 > {"key" => "value", "name" => "Andrew"}
 > ``` 
-> As you can see you link a key with the value using ```=>```. You also seperate the key/value by a comma to add another one.
+> As you can see you link a key with the value using ```=>```. You also seperate the key/value pair with a comma to add another one.
 
 Although it is smashing we have a minimum, someone could still copy-paste their novel into ```:biography``` and save it to our database. We'd rather they didn't do that. Just for performance sake or something something.
 
@@ -807,9 +807,21 @@ validates :biography, length: { minimum: 120, maximum: 400, too_short: "%{count}
 ```
 So, we added:
 
-**+**  ```maximum: 400,```
+**+**  ```maximum: 400```
 
-**+** ```, too_long: "%{count} characters is too long, you need to keep it under 400 characters"```
+**+** ```too_long: "%{count} characters is too long, you need to keep it under 400 characters"```
+
+inside our hash.
+
+> add explanation for %{} in ruby
+
+Let's also validate that the email provided is unique. This follows pretty much the first example but this tome focusing on uniqueness rather than presence like so:
+
+```ruby
+validates :email, uniqueness: true
+```
+
+> There are other validations we could add like checking for an email conforming to a certain case. I'm not going to do that here but have a go, see if you can google up yourself a storm and add that in!
 
 
 
