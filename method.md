@@ -787,7 +787,11 @@ Next let's ensure our biography is at least 120 characters long. Write the follo
   validates :biography, length: { minimum: 120, too_short: "%{count} characters is too short, you need at least at least 120 characters" }
 ```
 
-Here we have done something a little different! We have repeated the first two steps as before, offered the keyword validates and then the column we want to validate. But this time, we added an object which is attached to ```length:``` to provide some further configuration than just a minimum length.
+Here we have done something a little different! We have repeated the first two steps as before, offered the keyword validates and then the column we want to validate. But this time, we added a hash which is attached to ```length:``` to provide some further configuration than just a minimum length.
+
+> ### Ruby Hashes
+> You'll notice hashes quite a lot in terms of configuration in Rails. In Ruby a hash to set between curly braces ```{}``` and offers a **key** and a **value**. Here is an example of a hash:
+> ```{"key" => "value", "name" => "Andrew"}``` 
 
 #### create a user controller
 
