@@ -784,14 +784,34 @@ Awesome, now no one will be able to save anything to our database without an ent
 Next let's ensure our biography is at least 120 characters long. Write the following:
 
 ```ruby
-  validates :biography, length: { minimum: 120, too_short: "%{count} characters is too short, you need at least at least 120 characters" }
+  validates :biography, length: { minimum: 120, too_short: "%{count} characters is too short, you need at least 120 characters" }
 ```
 
 Here we have done something a little different! We have repeated the first two steps as before, offered the keyword validates and then the column we want to validate. But this time, we added a hash which is attached to ```length:``` to provide some further configuration than just a minimum length.
 
 > ### Ruby Hashes
-> You'll notice hashes quite a lot in terms of configuration in Rails. In Ruby a hash to set between curly braces ```{}``` and offers a **key** and a **value**. Here is an example of a hash:
-> ```{"key" => "value", "name" => "Andrew"}``` 
+> You'll notice hashes quite a lot in terms of configuration in Rails. In Ruby a hash is created by using curly braces ```{}``` and including a **key** and a **value** within quotes. Here is an example of a hash:
+> ```
+> {"key" => "value", "name" => "Andrew"}
+> ``` 
+> As you can see you link a key with the value using ```=>```. You also seperate the key/value by a comma to add another one.
+
+Although it is smashing we have a minimum, someone could still copy-paste their novel into ```:biography``` and save it to our database. We'd rather they didn't do that. Just for performance sake or something something.
+
+> INSERT JOKE CARTOON HERE
+
+Let's add a maximum to our length. Looking through the Rails documentation they have an example very similar to what we want. Let's just add in the maximum after a comma. Our code should look something like this:
+
+```ruby
+validates :biography, length: { minimum: 120, maximum: 400, too_short: "%{count} characters is too short, you need at least 120 characters", too_long: "%{count} characters is too long, you need to keep it under 400 characters" }
+```
+So, we added:
+
+**+**  ```maximum: 400,```
+
+**+** ```, too_long: "%{count} characters is too long, you need to keep it under 400 characters"```
+
+
 
 #### create a user controller
 
