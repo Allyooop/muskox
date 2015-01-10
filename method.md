@@ -823,7 +823,17 @@ validates :email, uniqueness: true
 
 > There are other validations we could add like checking for an email conforming to a certain case. I'm not going to do that here but have a go, see if you can google up yourself a storm and add that in!
 
+Right, we've pulled in a lot of Rails there. We added validations to our user model. We've checked that things exist and aren't left empty.
 
+We then set the required minimum and maxiumum length for our biography as well as some custom error messages.
+
+We finished off making sure that no one could make several accounts with the same email account.
+
+We've now got a solid database model of our users set up, we have also used Devise to do some work for us setting up those users as well as all of the frontend.
+
+But we are missing something, the C in MVC, our user controller!
+
+Let's do that in our next section.
 
 #### create a user controller
 
