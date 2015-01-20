@@ -259,26 +259,26 @@ In this chapter we are going to create our basic homepage. We are going to use t
 
 We will also touch on Rails routing to make sure that when someone goes to the route "/" they see the homepage we have designed rather than the basic rails app homepage.
 
-Throughout this chapter we will also add some styles to our app so it doesn't look terrible. We will use SASS which is a developer friendly CSS preprocessor (essentially CSS with developer focused shortcuts ) 
+Throughout this chapter we will also add some styles to our app so it doesn't look terrible. We will use SASS which is a developer friendly CSS preprocessor (essentially CSS with developer/designer-focused shortcuts ). 
 
 #### generate our first controller
 
 Let's create our first meaningful additon to the app!
 
-> You'll be happy to know, as far as configuration, that is most of it for the book apart from deployment!
+> You'll be happy to know, as far as configuration, that is most of it for the book... apart from deployment!
 
 We are going to heavily leverage the default Rails generators. You can generate a lot from the command line. Each of the available generators require certain things to be added.
 
 Essentially the pattern you follow is ```rails g``` (g is shorthand for generate) followed by the resource you want to generate, the name of the resource and then any optional things you want the generated resource to contain (like a page called index or a database column of people's names etc.)
 
-Following this pattern, lets create a "controller" named pages with a webpage called index. To do so, run the following command:
+Following this pattern, let's create a "controller" named pages with a webpage called index. To do so, run the following command:
 
 ```bash
 rails g controller Pages index
 ```
 This is will create a lot of files. Before we get into what it created, let's look at what we asked Rails to generate.
 
-As mentioned we ran the ```rails g``` command. We followed that with what resource we wanted to create (a controller) the name of our controller ```Pages```, which we added a sub-resource called ```index``` (which in terms of creating a controller, is a method called index).
+As mentioned we ran the ```rails g``` command. We followed that with what resource we wanted to create (a controller) the name of our controller ```Pages```, to which we added a sub-resource called ```index``` (which in terms of creating a controller, is a method called index).
 
 So, when we ran that command we created ALOT of files. They are all really simple BUT, it can be a little bit intimidating to see them all at once when you are learning Rails. Here is what it looks like:
 
@@ -417,7 +417,9 @@ In ```/app/views/layouts/application.html.erb``` add the following just above th
 
 Let's add some basic Scss.
 
-First rename ```pages.css.scss``` to ```_variables.css.scss```
+First rename ```application.css``` to ```application.css.scss```. This ensures we are using scss.
+
+Next, rename ```pages.css.scss``` to ```_variables.css.scss```
 
 This file will be where we declare our global variables like colors and fonts.
 
@@ -429,9 +431,9 @@ $brand-color: #E53935;
 $brand-grey: #F7F1F2;
 ```
 
-Anything with a ```$``` in front of it is a variable in Sass. A variable is a reusable bit of CSS. So in the future, instead of having to remember the actual code for our red brand colour we can just write ```$brand-color```.
+Anything with a ```$``` in front of it is a variable in Sass. A variable is a reusable bit of CSS. So in the future, instead of having to remember the actual hexcode for our red brand colour we can just write ```$brand-color```.
 
-> Variable are one of the key strengths of Sass over plain old CSS. For a quick run down of the great things Sass introduces see [the Sass website for more info](http://sass-lang.com/guide).
+> Variables are one of the key strengths of Sass over plain old CSS. For a quick run down of the great things Sass introduces see [the Sass website for more info](http://sass-lang.com/guide).
 
 In our ```application.css.scss``` file delete the contents and write the following:
 
@@ -472,9 +474,10 @@ nav {
   }
 }
 ```
-Here on the first line we are importing the ```_variables.css.scss``` file. We don't need to include the underscore or the file extension. Sass is smart enough to know your importing a Sass file. Just make sure you have the semi-colon after each import statement. If you don't your app will blow up with Sass errors.
+Here on the first line we are importing the ```_variables.css.scss``` file. We don't need to include the underscore or the file extension. Sass is smart enough to know you're importing a Sass file. Just make sure you have the semi-colon after each import statement. If you don't your app will blow up with Sass errors.
 
 > You might ask what is the point of an underscore? Well, it tells Sass that you don't want it to be converted to CSS. That is, you are using it to be imported somewhere so you can control the order of your Sass rather than be turned into an individual file called variables.css. If you don't include the underscore Sass may try to convert it to CSS which is not what we want.
+> The underscore also helps other developers know it is included, or rather **imported**, elsewhere
 
 The comments that come after the import statement are the "sprocket" asset pipeline syntax. Essentially this is where we tell Rails what to require and how to order things. I like to keep this simple so all i am doing is telling Rails to compile everything in that file (including what is in that file) into ```application.css```.
 
@@ -499,7 +502,9 @@ Another thing you may notice about our file is that be can embed elements inside
 
 This allows you to nest elements and classes with ease but also create powerful namespaces for your CSS without the overhead of manually writing lots of CSS.
 
-That wasn't a ton of extra styling but we've added a touch of class to our app. We'll return to that later as our app gets fleshed out futher.
+That wasn't a ton of extra styling but we've added a touch of class to our app. And really, we got a good look at scss.
+
+We'll return to that later as our app gets fleshed out futher.
 
 ## Create your User model
 
@@ -513,17 +518,17 @@ Luckily we don't have to be perfect with Rails. There is always the ability to a
 
 For now, let's represent our users with the following database information:
 
-First name
-Last name
-organization
-biography
-Job title
-email
-password
+* First name
+* Last name
+* organization
+* biography
+* Job title
+* email
+* password
 
 To do this, we'll set up a basic version of this as a generic Rails model, afterwards adding the powerful authentication gem Devise to provide the management of passwords, signing in and emails.
 
-Back into the command line run the following command:
+Get back into the command line and run the following command:
 
 ```bash
 rails g model User first_name:string last_name:string organization:string biography:text job_title:string email:string
@@ -587,9 +592,9 @@ This will output something like the below:
 ==========   
 ```
 
-We are pretty much ready to use the powerful Gem Device but first let's update our user.rb model file to include what fields in the database are included.
+We are pretty much ready to use the powerful Gem Devise but first let's update our user.rb model file to include what fields in the database are included.
 
-This is a personal thing but to me it seems vital to clarity to highlight what each model has in its database. To that end, add the following to our ```app/models/user.rb``` file:
+This is a personal thing but to me it seems vital for clarity to highlight what each model has in its database. To that end, add the following to our ```app/models/user.rb``` file:
 
 ```ruby
 # update app/models/user.rb
@@ -600,7 +605,6 @@ class User < ActiveRecord::Base
   #   text :biography
   #   string :job_title
   #   string :email
-  
 end
 ```
 
@@ -618,7 +622,7 @@ gem 'devise'
 
 Whenever you update your gemfile you need to run bundle install. Do that now:
 
-```
+```bash
 # update gemfile
 bundle install
 ```
@@ -838,6 +842,30 @@ But we are missing something, the C in MVC, our user controller!
 Let's do that in our next section.
 
 #### create a user controller
+
+Back in your command line run the following line:
+
+```bash
+rails g controller Users index show
+```
+
+Here we have run another Rails generate command. This time we have told it to create a controller and the related views for our User pages and model. It creates another whole load of files.
+
+The tendency of Rails to splurt out a lot of files can be very intimidating to a newcomer. Don't worry about it. You'll soon get it. And soon know what files to ignore, what files to delete and what files to focus on.
+
+Talking about focus, open up your user_controller.rb file.
+
+Inside it you should see:
+
+```ruby
+class UsersController < ApplicationController
+  def index
+  end
+
+  def show
+  end
+end
+```
 
 #### seed the db and sign in
 
