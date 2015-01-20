@@ -734,7 +734,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-Luckily we placed comments for each column in our database's user table so we can knock down each task without struggling.
+Luckily we placed comments for each column in our database's user table so we can knock down each task without struggling to remember what we need to validate before saving to our database.
 
 The most basic validation we want to enact here is that each database column is filled in.
 
@@ -742,7 +742,7 @@ However, with our biography record we'll also want it to be longer than a couple
 
 On the flipside though, we don't want John from Accounting to ramble on and on about his Hobbies so we'll need some kind of length limit.
 
-In regard to our email, we'll want to be sure that what people have provided is an email as well as being existing.
+In regard to our email, we'll want to be sure that what people have provided is an email that doesn't already belong to an account.
 
 If we hadn't chosen a mature framework like Rails, we would have to build a lot of this functionality ourselves.
 
@@ -750,7 +750,7 @@ Luckily for us, Rails brings a lot of "magic".
 
 > The reality is NONE of this is magic. What has happened is a lot of developers have suffered building these things before and so often that they created all of the most common validations they could think of and gave Rails the ability to call these things. In your career as a developer you'll soon be extending, changing or building alternatives depending on special cases but Rails provides the basics you need.
 
-A great way to get to know what Rails provides is the Rails Guides. And thankfully Rails provides [an extensive summary of the validations on offer there](http://guides.rubyonrails.org/active_record_validations.html).
+A great way to get to know what Rails provides is the Rails Guides. And thankfully Rails provides [an extensive summary of the validations on offer here](http://guides.rubyonrails.org/active_record_validations.html).
 
 I strongly recommend reading through that guide and every guide in the series several times. Don't ever be put off doing so. They are written by Rails experts.
 
