@@ -1,8 +1,8 @@
 # Building a CMS with Rails
 
-In this book we will build a modern CMS with Rails. 
+In this book we will build a minimal CMS with Rails. 
 
-We will create a dashboard that our users can use to create articles and update other important information.
+We will create a dashboard that our users can use to create articles and update other important information which will update information available to our users.
 
 This CMS will not be a traditional CMS where they can directly edit and update the fontend of their site. The idea is that you let the content creators create the content and leave the design and frontend alone.
 
@@ -68,7 +68,7 @@ This command gives the new user we created called rails the ability to edit our 
 * ```TO 'rails'@'localhost'``` = user the command relates to
 * ```IDENTIFIED BY 'secure-password'``` = as long as they have the password of secure-password
 
-So altogether, give the ability to edit the database muskox_db and all the data and tables within it to the user called rails as long as it is using secure-password as the password.
+So altogether, that command gives the user rails the ability to edit the database muskox_db and all the data and tables within it as long as it is using secure-password as the password.
 
 We are nearly finished but the last thing we need to do is reload all the privledges. To do this admin step we run:
 
@@ -84,7 +84,7 @@ To exit the MySQL shell run:
 ```sql
 EXIT;
 ```
-Fantastic. We have a lovely new user and database set up for our rails project. Time to create that and put that database to use.
+We have a lovely new user and database set up for our rails project. Time to create that and put that database to use.
 
 ## Create your Rails Project
 
@@ -111,7 +111,7 @@ Because we removed the default test framework we also have to plug one back in. 
 
 ## Updating your Gemfile
 
-Let's do two things to our gemfile. First, let's remove the test framework with RSpec. RSpec is the most popular testing framework for Rails so let's use that.
+Let's do two things to our gemfile. First, let's add the test framework RSpec. RSpec is the most popular testing framework for Rails so let's use that.
 
 Because this book isn't about testing, we will be pretty light on the testing angle but to make sure we have something we'll also install an automatic testing framework which helps us build something so if you build additional functionality, you'll know when you've broken your app.
 
@@ -125,7 +125,7 @@ group :development, :test do
 end
 ```
 
-Awesome. The ```group``` keyword allocates the following things into specific grouos degined in your rails environments, with the defaults being :development, :test and :production.
+Awesome. The ```group``` keyword allocates the following things into specific groups designated in your rails environments, with the defaults being :development, :test and :production.
 
 > further explanation
 
@@ -137,7 +137,7 @@ Locate your Gemfile again and **remove** the following:
 # remove coffescript gem from project
 gem 'coffee-rails', '~> 4.0.0'
 ```
-Everything you update your gemfile for your Rails project you should run bundle install. From the project directory run:
+Everytime you update your gemfile for your Rails project you should run bundle install. From the project directory run:
 
 ```bash
 bundle install
@@ -155,7 +155,7 @@ That should run a Rails command to create four things. That is all for now, let'
 
 Our next step is to ensure our database is configured correctly with Rails. Rails is pretty awesome but it is not a mind-reader. We'll have to make sure we get our MySQL database connected and talking to each other.
 
-Inside your rails project, find open up the **database.yml** file located in the **/config** folder.
+Inside your rails project, open up the **database.yml** file located in the **/config** folder.
 
 Opening that up, you will see something like this:
 
@@ -192,7 +192,9 @@ Besides needing a new job, we could turn it into a chart that looked like this:
 
 > INSERT CHART IMAGE
 
-Like you have likely seen before, that chart is made up of a key, our revenue in a particular year, and a value, the amount we made.
+As you have likely seen before, that chart is made up of a key, our revenue in a particular year, and a value, the amount we made.
+
+And that is all a key-value pair means. 
 
 Hopefully that has helped a little bit.
 
@@ -202,7 +204,7 @@ Hopefully that has helped a little bit.
 
 So, in terms of our database.yml file we need to update the key value pairs with information that relates to our database we created.
 
-The default keys are inhereted by the "development", "test" and "production" sections. That is, you define general keys and values at the top and the rest of the sections use this syntax ```<<: *default``` to use all those keys and values without having to repeat them.
+The default keys are inherited by the "development", "test" and "production" sections. That is, you define general keys and values at the top and the rest of the sections use this syntax ```<<: *default``` to use all those keys and values without having to repeat them.
 
 So, we need to update your info. Write the following:
 
@@ -231,7 +233,7 @@ Right, let's check that everything is connected correctly. In your terminal run 
 rails server
 ```
 
-This should boot up your WEBrick server with the second line indicating which URL the rails app is working on:
+This should boot up your WEBrick server on the second line indicating which URL the rails app is working on:
 
 ```bash
 => Rails 4.1.8 application starting in development on http://0.0.0.0:3000
@@ -246,7 +248,7 @@ If that isn't what you see, try and troubleshoot with the info provided. Some of
 * Have you entered the right URL?
 * Is your MySQL server running?
 * Have you entered ALL of the details correctly?
-* Did you run Rails S, what is that saying?
+* Did you run Rails S, rawhat is that saying?
 * Are you in the Rails directory when you ran that command?
 
 Hopefully everything is working smoothly. Right, time to do some building. In the next chapter we'll create our homepage
