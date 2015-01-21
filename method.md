@@ -875,16 +875,28 @@ Let's add some real code and offer two traditional "RESTful" routes. An index ro
 
 So, we have two tasks:
 
-1. 
-2. 
+1. Create a controller method that lists all of our user
+2. Create a controller method that lists a specfic user when that specific user is asked for
 
-To do this we need to create an instance variable that talks to our model and gets our list of users. 
+As Ruby is an object-oriented programming language, and Rails a reflection of that, what we want to do is create, within our controller class, a blueprint of methods to take in those situations. 
 
-> #### Instance Variables
+Because we want to use our methods in our views, we need to define things as **instance variables**. That is, things like ```@user``` rather than just ```user```. This is because in Rails, anything that gets exposed in a view should use an instance variable over a local one - it results in less code.
+
+> ### Instance Variables
 > I'm kinda presuming you've seen and written an instance variable before. However, if you haven't or you feel a little shaky on them, let's quickly cover the idea behind them.
 > 
-> Ruby is a 
-
+> An instance variable is a variable defined in a class, like our UserController. Further to this though, the instance variable creates a new instance specific to every new object created by the class.
+>
+> So, an instance variable tells Ruby to create a variable specific to every object we create.
+>
+> This means, if we create three users with the names Bill, Bob and Berlinda that each user (and their individual object that they are defined in) has a variable called ```name``` which is specific to them. So, when we ask Ruby or Rails for our users in the view, we could get back something like this:
+> 1. ```id: 1 name: Bill```
+> 2. ```id: 2 name: Bob```
+> 3. ```id: 3 name: Berlinda```
+>
+> This is because each instance of an object, when it gets created defines its own user variable.
+> 
+> Another way of thinking about this is a company that asks new employees what computer they want when they join. Bill asks for a Linux laptop, Bob a Windows desktop and Berlinda a Mac. Every instance of a new employee ensures that @computer is filled in, and every request is specific to each employee.
 
 #### seed the db and sign in
 
