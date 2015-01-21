@@ -929,7 +929,7 @@ An ORM basically creates a version of common SQL (or NoSQL) commands but lets yo
 
 An ORM is basically an API for your data. A programmable interface.
 
-If you are wondering why we call User instead of something else... that is just the name of the model you want to call. If we had called our User model, Cat we would call:
+If you are wondering why we put User instead of something else... that is just the name of the model you want to call. If we had called our User model, Cat instead, we would call:
 
 ```ruby
 # Code for a cat management system
@@ -937,6 +937,16 @@ def index
   @cats = Cat.all
 end
 ```
+
+So with ActiveRecord you place the model name, the method you want to call/use and then any additional parameters you want to use after that. So, here's an example:
+
+```ruby
+def cats_i_found
+  @cats = Cat.last(5)
+end
+```
+
+> INSERT IMAGE/DRAWING
 
 #### seed the db and sign in
 
