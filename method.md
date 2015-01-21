@@ -867,10 +867,23 @@ class UsersController < ApplicationController
 end
 ```
 
-Those two Ruby methods don't do much this second. Due to Rails conventions they do let us go to the users/index page and users/show pages but not much else.
+Those two Ruby methods don't do much this second. Due to Rails conventions they automatically connect to the users/index page and users/show pages but not much else.
 
-Let's add some real code and offer two traditional RESTful routes. An index route that shows everything on the page, and a show route that gives us an individual user's page.
+> This is to say, Rails takes the method name within a class like UserController inheriting from the ApplicationController to mean look for a ```.html.erb``` page called the same thing. So, within our ```~/app/views/``` folder, Rails will look for a directory called ```/users/``` and expect to see a ```.html.erb``` file called ```index.html.erb``` and it will render that when people hit the corresponding route.
 
+Let's add some real code and offer two traditional "RESTful" routes. An index route that displays every user in the database, and a show route that gives us an individual user's page.
+
+So, we have two tasks:
+
+1. 
+2. 
+
+To do this we need to create an instance variable that talks to our model and gets our list of users. 
+
+> #### Instance Variables
+> I'm kinda presuming you've seen and written an instance variable before. However, if you haven't or you feel a little shaky on them, let's quickly cover the idea behind them.
+> 
+> Ruby is a 
 
 
 #### seed the db and sign in
