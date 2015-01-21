@@ -867,6 +867,12 @@ class UsersController < ApplicationController
 end
 ```
 
+Those two Ruby methods don't do much this second. Due to Rails conventions they do let us go to the users/index page and users/show pages but not much else.
+
+Let's add some real code and offer two traditional RESTful routes. An index route that shows everything on the page, and a show route that gives us an individual user's page.
+
+
+
 #### seed the db and sign in
 
 #### create a view that reflects the user's name
