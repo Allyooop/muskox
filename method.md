@@ -921,6 +921,23 @@ def index
 end
 ```
 
+The .all method comes from using ActiveRecord the default Rails ORM or object-relational mapper.
+
+> To find out more about ActiveRecord see [The corresponding Rails ActiveRecord querying guide](http://guides.rubyonrails.org/active_record_querying.html)
+
+An ORM basically creates a version of common SQL (or NoSQL) commands but lets you action those in the programming language of your choice.
+
+An ORM is basically an API for your data. A programmable interface.
+
+If you are wondering why we call User instead of something else... that is just the name of the model you want to call. If we had called our User model, Cat we would call:
+
+```ruby
+# Code for a cat management system
+def index
+  @cats = Cat.all
+end
+```
+
 #### seed the db and sign in
 
 #### create a view that reflects the user's name
