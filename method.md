@@ -897,6 +897,29 @@ Because we want to use our methods in our views, we need to define things as **i
 > This is because each instance of an object, when it gets created defines its own user variable.
 > 
 > Another way of thinking about this is a company that asks new employees what computer they want when they join. Bill asks for a Linux laptop, Bob a Windows desktop and Berlinda a Mac. Every instance of a new employee ensures that @computer is filled in, and every request is specific to each employee.
+> 
+> In Ruby we define an instance variable with an @ symbol at the front. So, user is a local variable, while @user is an instance variable.
+
+In our first method called ```index``` we want to call all of our users. We start by defining an instance variable. We are using an instance variable because we want each object to have an instance of this variable and also because we are going to use this instance in our views.
+
+Write the following inside our ```user_controller.rb``` file:
+
+```ruby
+def index
+  @users
+end
+```
+Next thing we want to do is get all those users out of our database model and into your controller. We do this quite simply by calling the User model we defined with the ```.all``` method.
+
+As you could probably guess, the ```.all``` method gets ***all*** of our users.
+
+Update the  ```user_controller.rb``` file:
+
+```ruby
+def index
+  @users = User.all
+end
+```
 
 #### seed the db and sign in
 
