@@ -938,6 +938,8 @@ def index
 end
 ```
 
+> INSERT IMAGE/DRAWING
+
 So with ActiveRecord you place the model name, the method you want to call/use and then any additional parameters you want to use after that. So, here's an example:
 
 ```ruby
@@ -946,9 +948,48 @@ def cats_i_found
 end
 ```
 
-> INSERT IMAGE/DRAWING
+This bit of code inside my controller calls my Cat model and asks for the last 5 cats I put into the database. So, my ActiveRecord query is constructed like so:
+
+```{name of model}.{name of method}(additional parameters)```
+
+The best way to find out the methods available for your Rails app using ActiveRecord is the [querying documentation](http://guides.rubyonrails.org/active_record_querying.html).
+
+Let's leave the cats for now and get back to our CMS.
+
+Our index controller method will now get back all of our users, which we can place into our user ```index.html.erb file```.
+
+Let's do that. Write the following erb into the file:
+
+```erb
+<!-- ~/app/views/users/index.html.erb -->
+<h1>Muskox CMS</h1>
+
+<p>Well, hello <%= @users.first_name %>!</p>
+```
+
+Before firing up that server however, we need to create an actual user! If we don't have a user Rails will splurt out errors.
 
 #### seed the db and sign in
+
+Let's create that user. We will do this by using the ```rake seed:db``` task. 
+
+first things first we need to create a user in that file.
+
+you locate it in /db/seeds.rb
+
+Add the following:
+
+
+```ruby
+User.create(first_name: 'Andrew', last_name: 'Duckworth', organization: 'Allyooop!', biography: 'Once upon a time, a long time ago someone had to come up with some filler bio information and what he did was ramble on a bit', job_title: 'developer', email: 'grillopress@gmail.com')
+```
+
+Hit the view
+
+Add additional resources
+
+change route to resources
+
 
 #### create a view that reflects the user's name
 
