@@ -391,10 +391,16 @@ Right, lets add a very basic navbar to our basic layout. To do this we will crea
 
 It is convention in Ruby and Rails that any partial, an element that is injected into another to make a whole template, is named with an underscore first. This way, when a developer, or yourself, looks at a file with an underscore they know that they are the small modules that make up a larger whole somewhere else.
 
-Right, create our navbar partial in our ```app/views/layouts/``` directory called ```_navbar.html.erb```. Fill it with the basic HTML below:
+Right, create our navbar partial in a new views directory. Create a new directory called ```shared``` where we'll drop any partials that can be shared across views files. 
+
+Your file should be available here:
+
+```~/app/views/shared/```
+
+In that new directory create a file called ```_navbar.html.erb```. Fill it with the basic HTML below:
 
 ```html
-<!-- put the navbar in /app/views/layouts/application.html.erb -->
+<!-- put the navbar in /app/views/shared/application.html.erb -->
   <nav>
     <div class="nav-container">
      <ul>
@@ -409,7 +415,7 @@ Working in the same directory, we need to update our ```application.html.erb``` 
 In ```/app/views/layouts/application.html.erb``` add the following just above the ```<%= yield %>:
 
 ```rails
-<%= render "layouts/menu" %>
+<%= render "shared/navbar" %>
 ```
 
 > ## How do ERB!
