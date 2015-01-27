@@ -934,7 +934,7 @@ The .all method comes from using ActiveRecord the default Rails ORM or object-re
 
 An ORM basically creates a version of common SQL (or NoSQL) commands but lets you action those in the programming language of your choice.
 
-An ORM is basically an API for your data. A programmable interface.
+An ORM is basically an API for your data. A programmable interface. ActiveRecord basically creates Ruby versions of SQL, the structured query language that powers our database-driven app
 
 If you are wondering why we put User instead of something else... that is just the name of the model you want to call. If we had called our User model, Cat instead, we would call:
 
@@ -980,16 +980,50 @@ Before firing up that server however, we need to create an actual user! If we do
 
 Let's create that user. We will do this by using the ```rake seed:db``` task. 
 
-first things first we need to create a user in that file.
+first things first we need to create a user in our ```seeds.rb``` file.
 
-you locate it in /db/seeds.rb
+you locate it in ````/db/``` directory.
 
-Add the following:
+Add the following to ~/db/seeds.rb:
 
 
 ```ruby
 User.create(first_name: 'Andrew', last_name: 'Duckworth', organization: 'Allyooop!', biography: 'Once upon a time, a long time ago someone had to come up with some filler bio information and what he did was ramble on a bit', job_title: 'developer', email: 'grillopress@gmail.com')
 ```
+
+Naturally, feel free to User.create() as many users as you want with the details you want to include.
+
+That is just me.
+
+> Feel free to drop me an email any time to chat about Rails.
+
+After you have filled up that file, fired up your terminal and run the following command:
+
+```bash
+rake seed:db
+```
+
+This will load into your database your seed file.
+
+After you have run the file delete the contents of your ```seed.rb``` file. If you don't you may accidentally re-create everything you have just put in.
+
+Right, you should now have at least one user in your database!
+
+Let's see our user view in action.
+
+Start the Rails server as before:
+
+```bash
+rails s
+```
+
+After doing so visit your provided URL and port number with the relevant user route of: ```/users/index```
+
+If you are developing locally this should be:  ```http://localhost:3000/users/index```
+
+You should see a rather exciting view which says hello to your user and their first name! Hurrah. Fame and fortune awaits.
+
+
 
 Hit the view
 
