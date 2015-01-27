@@ -248,8 +248,9 @@ If that isn't what you see, try and troubleshoot with the info provided. Some of
 * Have you entered the right URL?
 * Is your MySQL server running?
 * Have you entered ALL of the details correctly?
-* Did you run Rails S, rawhat is that saying?
+* Did you run Rails S, what is that saying?
 * Are you in the Rails directory when you ran that command?
+* If it mentions that no DB exists, run ```rake db:create db:migrate``` and ignoring the messages run Rails S again, does that work?
 
 Hopefully everything is working smoothly. Right, time to do some building. In the next chapter we'll create our homepage
 
