@@ -742,7 +742,7 @@ class User < ActiveRecord::Base
   #   string :organization
   #   text :biography
   #   string :job_title
-  #   email :string
+  #   string :email
 end
 ```
 
