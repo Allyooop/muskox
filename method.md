@@ -1023,9 +1023,39 @@ If you are developing locally this should be:  ```http://localhost:3000/users/in
 
 You should see a rather exciting view which says hello to your user and their first name! Hurrah. Fame and fortune awaits.
 
+As well as listing "all" of our users, we want the ability to list individual users.
 
+This is a common pattern in websites. You have a main page where everything is summarized. A list of blog posts say, and individual pages per each blog.
 
-Hit the view
+If you have used any sizable app or site that holds many users you may have visited a URL that features a route with the following pattern: ```/users/21398/```
+
+Taking another example, think of the popular Internet Movie Database site. Each film title is logged and the URL features the number assigned to it. 
+
+When we visit a page of a film we are interested in you see an URL like [http://www.imdb.com/title/tt0109382/](http://www.imdb.com/title/tt0109382/)
+
+This is what we want to replicate, but with our user controller.
+
+To do that we need to create a **"show"** method in our users_controller. Write the following in ```~/app/controllers/users_controller.rb```:
+
+```ruby
+def show
+  @user
+end
+```
+
+Here we have created a method for our show action. The choice of show is not an accident. It is a Rails, and RESTful, convention. Where possible we'll stick with that when we can.
+
+Inside the show method we have created an instance variable. Unlike our ```index``` method we have used the singular of @user instead of @users.
+
+This is because we are getting one user, rather than a whole gang of them.
+
+Let's do something with our instance variable.
+
+With it, and therefore when someone hits our ```/users/show``` url by giving us a user ID, we want to give them a page specific to that user.
+
+So, we would have a user version of the internet movie database. When a number is added after users/ we look up that user in the database and if it is there, we give it back.
+
+That is, when someone wants to see users/1 with 1 standing for the first user
 
 Add additional resources
 
