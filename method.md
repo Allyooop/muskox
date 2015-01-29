@@ -1045,17 +1045,78 @@ end
 
 Here we have created a method for our show action. The choice of show is not an accident. It is a Rails, and RESTful, convention. Where possible we'll stick with that when we can.
 
+> explanation of REST again
+
 Inside the show method we have created an instance variable. Unlike our ```index``` method we have used the singular of @user instead of @users.
 
 This is because we are getting one user, rather than a whole gang of them.
 
-Let's do something with our instance variable.
+When someone hits our ```/users/show``` route by giving us a specific user ID, we want to give them a page reflecting that user.
 
-With it, and therefore when someone hits our ```/users/show``` url by giving us a user ID, we want to give them a page specific to that user.
+> explain how the route is show, but actually it is a number
 
-So, we would have a user version of the internet movie database. When a number is added after users/ we look up that user in the database and if it is there, we give it back.
+To achieve this we need to grab the route that our visitor has typed in (something like ```/users/1```) and take that number and use it to find a user with a corresponding ID.
 
-That is, when someone wants to see users/1 with 1 standing for the first user
+In terms of finding a user this is pretty easy in Rails. Using ActiveRecord we have a method available well named called .find which coupled with a bracket we can use to select a specific user.
+
+That is, we could call User.find(1) to get the user with the ID of 1.
+
+The structure here is:
+
+```
+{model we want to call}.{find, our ActiveRecord method of choice}{ our number inside brackets like so (1)} 
+```
+
+Naturally we don't want to always reply with our first user because, however smashing my bio is, that isn't a custom app by any stretch of the imagination.
+
+Our code looks like this currently:
+
+```ruby
+def show
+  @user = User.find(1)
+end
+```
+
+To get any particular user we need to access the visitor's URL or route. To do this we can use the Ruby method of params.
+
+Params, short for parameters, is a Ruby method that lets us grab certain URL attributes to manipulate or call other bits of code or data.
+
+> Sinatra book explantation here of Params
+
+Params lets us access the URL, but as with all code we need to drop it into a placeholder. To do that, we create a symbol called :id inside some squarebrackets.
+
+Our code then, should look like this:
+
+```
+def show
+  @user = User.find(params[:id])
+end
+```
+
+Let's add some code to our users view so that we can reflect our code and check it does what we expect.
+
+In the ```~/app/views/users/show.html.erb``` file delete the contents and write the following in:
+
+```erb
+<h1><%= @user.first_name %>'s page</h1>
+```
+Run ```rails a``` and type in ```http://localhost:3000/users/1```
+
+Did it work? No. The issue here is that our route is not set up to access to :id params, our controller is, but our route just expects to render a static resource.
+
+Open your routes file, located here: ```~/config/routes.rb``` , and update the show route to the following:
+
+```ruby
+get '/users/:id', to: 'users#show'
+```
+
+What this does is take the input after ```/users/``` and assigns that to the :id params symbol we called in our controller code.
+
+The to: bit just tells Rails that we want it to write up the /users/:id route and connect it to the users_controller.rb file and the show method. So essentially, that last bit says:
+
+```
+'{name of controller}#{method inside the controller file}'
+```
 
 Add additional resources
 

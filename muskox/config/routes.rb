@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/index'
-
-  get 'users/show'
+  
+  get '/users/:id', to: 'users#show'
 
   get 'pages/index'
   
