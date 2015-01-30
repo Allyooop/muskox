@@ -1102,7 +1102,7 @@ In the ```~/app/views/users/show.html.erb``` file delete the contents and write 
 ```
 Run ```rails a``` and type in ```http://localhost:3000/users/1```
 
-Did it work? No. The issue here is that our route is not set up to access to :id params, our controller is, but our route just expects to render a static resource.
+Did it work? No. The issue here is that our route is not set up to access to :id params, our controller is, but our route just expects to render a static resource called ```show.html.erb```.
 
 Open your routes file, located here: ```~/config/routes.rb``` , and update the show route to the following:
 
@@ -1112,7 +1112,7 @@ get '/users/:id', to: 'users#show'
 
 What this does is take the input after ```/users/``` and assigns that to the :id params symbol we called in our controller code.
 
-The to: bit just tells Rails that we want it to write up the /users/:id route and connect it to the users_controller.rb file and the show method. So essentially, that last bit says:
+The to: bit just tells Rails that we want it to write up the /users/:id route and connect it to the users_controller.rb file and the show method. So essentially, that last bit, ```users#show``` says:
 
 ```
 '{name of controller}#{method inside the controller file}'
