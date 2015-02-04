@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  #get 'users/index'
+  #get '/users/:id', to: 'users#show'
   
-  get '/users/:id', to: 'users#show'
+  resources :users
 
   get 'pages/index'
   
