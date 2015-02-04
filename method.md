@@ -1118,6 +1118,12 @@ The to: bit just tells Rails that we want it to write up the /users/:id route an
 '{name of controller}#{method inside the controller file}'
 ```
 
+Run ```rails s``` in the console again, unless your Rails server is still running, and visit your local website [```http://localhost:3000/users/1```](```http://localhost:3000/users/1```).
+
+You should now see a lovely greeting for our first user
+
+
+
 Add additional resources
 
 change route to resources
