@@ -1,11 +1,4 @@
 class UsersController < ApplicationController
-  #   string :first_name
-  #   string :last_name
-  #   string :organization
-  #   text :biography
-  #   string :job_title
-  #   string :email
-  
 
   def index
     @users = User.all
@@ -15,16 +8,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def new
+    @user = User.new
+  end
+  
   def create
-    @user = User.new(article_params)
+    @user = User.new(user_params)
     
     @user.save
     redirect_to @user
   end
   
   private
-  def article_params
-    params.require(:article).permit(:first_name, :last_name, :organization, :biography, :job_title, :email)
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :organization, :biography, :job_title, :email)
   end
   
 end
