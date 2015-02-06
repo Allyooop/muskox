@@ -538,7 +538,7 @@ To do this, we'll set up a basic version of this as a generic Rails model, after
 Get back into the command line and run the following command:
 
 ```bash
-rails g model User first_name:string last_name:string organization:string biography:text job_title:string email:string
+rails g model User first_name:string last_name:string organization:string biography:text job_title:string
 ```
 
 This will invoke activerecord to create a "migration", a file that represents our user model called ```app/models/user.rb``` as well as well an Rspec test for that model
@@ -574,7 +574,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :organization
       t.text :biography
       t.string :job_title
-      t.string :email
 
       t.timestamps
     end
@@ -611,9 +610,10 @@ class User < ActiveRecord::Base
   #   string :organization
   #   text :biography
   #   string :job_title
-  #   string :email
 end
 ```
+
+> If you noticed we haven't added an email field yet, don't worry. Devise will add that for us when we install it
 
 Awesome. let's set up Devise.
 
@@ -718,7 +718,23 @@ app/views/devise/mailer/reset_password_instructions.html.erb
 app/views/devise/mailer/unlock_instructions.html.erb 
 ```
 
-That is a whole ton of files. Essentially they provide the forms for users to sign up, in and out of your app. We'll cover styling Devise later, for now let's move onto creating a blog-like article model.
+That is a whole ton of files. Essentially they provide the forms for users to sign up, in and out of your app. We'll cover styling Devise later, for now let's finish off installing Devise before moving onto creating a blog-like article model.
+
+Our final thing we need to do to install Devise is run the following command:
+
+```bash
+rails generate devise
+```
+
+This will create a database migration, include some devise routes into our routes.rb file as well as inject into our user.rb model some devise symbols.
+
+For now, we'll now cover too much of this. Run another migration to update your database:
+
+```bash
+rake db:migrated
+```
+
+But you now have a fully functioning user sign in system. Awesome!
 
 ## Seeding your db and validation
 
@@ -743,11 +759,16 @@ class User < ActiveRecord::Base
   #   string :organization
   #   text :biography
   #   string :job_title
-  #   string :email
 end
 ```
 
 Luckily we placed comments for each column in our database's user table so we can knock down each task without struggling to remember what we need to validate before saving to our database.
+
+First, add another comment for the new email column which Devise added for us:
+
+```ruby
+  #   string :email
+```
 
 The most basic validation we want to enact here is that each database column is filled in.
 
@@ -1100,7 +1121,7 @@ In the ```~/app/views/users/show.html.erb``` file delete the contents and write 
 ```erb
 <h1><%= @user.first_name %>'s page</h1>
 ```
-Run ```rails a``` and type in ```http://localhost:3000/users/1```
+Run ```rails s``` and type in ```http://localhost:3000/users/1```
 
 Did it work? No. The issue here is that our route is not set up to access to :id params, our controller is, but our route just expects to render a static resource called ```show.html.erb```.
 
