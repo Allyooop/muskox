@@ -1,0 +1,37 @@
+<%= form_for :user, url: users_path do  |f| %>
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+    
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :job_title %>
+    <%= f.text_field :job_title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :organization %>
+    <%= f.text_field :organization %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :biography %>
+    <%= f.text_field :biography %>
+  </div>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<p><%= link_to 'Back', users_path %></p>
