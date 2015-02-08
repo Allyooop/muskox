@@ -113,7 +113,7 @@ The best way to find out the methods available for your Rails app using ActiveRe
 
 Let's leave the cats for now and get back to our CMS.
 
-Our index controller method will now get back all of our users, which we can place into our user ```index.html.erb file```.
+Our index controller method will now get back all of our users, which we can place into our user ```index.html.erb``` file.
 
 Let's do that. Write the following erb into the file:
 
@@ -132,7 +132,7 @@ Let's create that user. We will do this by using the ```rake seed:db``` task.
 
 first things first we need to create a user in our ```seeds.rb``` file.
 
-you locate it in ````/db/``` directory.
+you locate it in ```/db/``` directory.
 
 Add the following to ~/db/seeds.rb:
 
